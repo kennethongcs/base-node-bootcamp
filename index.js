@@ -74,7 +74,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const port = 3004;
+const port = process.env.PORT || 3004;
 
 app.listen(port, () => {
   console.log(`Server is up, listening on port ${port}.`);

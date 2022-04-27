@@ -4,7 +4,8 @@
   "description": "# basic-node-bootcamp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "test": "node test.js",
     "db:init": "psql -d vessel_forecast -f tables_init.sql",
     "db:drop": "psql -d vessel_forecast -f tables_drop.sql",
     "db:seed": "psql -d vessel_forecast -f tables_seed.sql"
