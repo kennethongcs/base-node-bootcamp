@@ -10,12 +10,24 @@ import axios from 'axios';
 import moment from 'moment';
 import { getHash, getHashSalted } from './helper_functions.js';
 
-const pgConnectionConfigs = {
-  user: 'kennethongcs',
-  host: 'localhost',
-  database: 'vessel_forecast',
-  port: 5432,
-};
+let pgConnectionConfigs;
+
+if (process.env.DATABASE_URL) {
+  // pg will take in the entire value and use it to connect
+  pgConnectionConfigs = {
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  };
+} else {
+  pgConnectionConfigs = {
+    user: 'kennethongcs',
+    host: 'localhost',
+    database: 'vessel_forecast',
+    port: 5432,
+  };
+}
 
 const { Pool } = pg;
 const pool = new Pool(pgConnectionConfigs);
